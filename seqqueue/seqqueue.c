@@ -57,6 +57,13 @@ void SeqQuquqPrint(SeqQueue* q,const char* msg){
     return;
 }
 
-void SeqQueueFront(SeqQueue* q){
-    if(q == NULL)
+int SeqQueueFront(SeqQueue* q,SeqQueueType* value){
+    if(q == NULL){
+        return 0;
+    }
+    if(q->size == 0){
+        return 0;
+    }
+    *value = q->data[q->head];
+    return 1;
 }

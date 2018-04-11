@@ -19,7 +19,30 @@ void TestSeqQueuePush(){
     return;
 }
 
+void TestSeqQueueFront(){
+    TestType;
+    SeqQueueType value;
+    SeqQueue q;
+    SeqQueueInit(&q);
+    SeqQueuePush(&q,'a');
+    SeqQueuePush(&q,'b');
+    SeqQueuePush(&q,'c');
+    SeqQueuePush(&q,'d');
+    int ret = SeqQueueFront(&q,&value);
+    printf("expect: 1 , actual:%d\n",ret);
+    printf("expect: a , actual:%c\n",value);
+    SeqQueuePop(&q);
+    SeqQueuePop(&q);
+    SeqQueuePush(&q,'e');
+    SeqQuquqPrint(&q,"ab出队列,e入队列");
+    ret = SeqQueueFront(&q,&value);
+    printf("expect: 1 , actual:%d\n",ret);
+    printf("expect: c , actual:%c\n",value);
+    return;
+}
+
 int main(){
     TestSeqQueuePush();
+    TestSeqQueueFront();
     return 0;
 }

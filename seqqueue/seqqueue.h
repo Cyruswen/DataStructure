@@ -19,4 +19,4 @@ void SeqQueuePop(SeqQueue* q);
 
 void SeqQuquqPrint(SeqQueue* q,const char* msg);
 
-void SeqQueueFront(SeqQueue* q);
+int SeqQueueFront(SeqQueue* q,SeqQueueType* value);
