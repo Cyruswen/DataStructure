@@ -1,5 +1,5 @@
-linkstack:main.c linkstack.c
-	gcc $^ -o $@
+minstack:main.c linkstack.c
+	gcc $^ -o $@ -g
 .PHONY:clean
 clean:
-	rm -f linkstack
+	rm -f minstack

@@ -99,6 +99,7 @@ void MinStackPush(LinkStack* q,LinkStackType value){
         LinkNode* new_node1 = LinkStackCreateNode(value);
         LinkNode* new_node2 = LinkStackCreateNode(value);
         q->head = new_node1;
+        q->head->next = new_node2;
         q->tail = new_node2;
         return;
     }
@@ -124,13 +125,20 @@ void MinStackPush(LinkStack* q,LinkStackType value){
 }
 
 void MinStackPop(LinkStack* q){
-
+    if(q == NULL){
+        return;
+    }
+    LinkStackPop(q);
+    LinkStackPop(q);
+    return;
 }
 
 int MinStack(LinkStack* q,LinkStackType* value){
     if(q == NULL || value == NULL){
         return 0;
     }
+    *value = q->tail->data;
     printf("栈顶元素是：%c\n",q->tail->data);
     return 1;
 }
+

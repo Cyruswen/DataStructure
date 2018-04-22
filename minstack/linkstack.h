@@ -30,4 +30,5 @@ int MinStack(LinkStack* q,LinkStackType* value);
 
 void MinStackPush(LinkStack* q,LinkStackType value);
 
-//void MinStackPop(LinkStack* q);
+void MinStackPop(LinkStack* q);
+
