@@ -91,7 +91,7 @@ TreeNode* _TreeCreate(TreeNodeType array[], size_t size, size_t* index, TreeNode
     new_node->rchild = _TreeCreate(array, size, index, null_node);
     return new_node;
 }
-
+//hello
 TreeNode* TreeCreate(TreeNodeType array[], size_t size, TreeNodeType null_node){
    //当前读到了数组中第几个元素 
     size_t index = 0;
