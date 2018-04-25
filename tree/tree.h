@@ -27,3 +27,5 @@ void PostOrder(TreeNode* root);
 void LevelOrder(TreeNode* root);
 
 TreeNode* TreeCreate(TreeNodeType array[], size_t size, TreeNodeType null_node);
+
+TreeNode* TreeClone(TreeNode* root);
