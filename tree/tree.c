@@ -45,7 +45,8 @@ void PostOrder(TreeNode* root){
     return;
 }
 
-void LevelOrder(TreeNode* root){
+void LevelOrder(TreeNode* r:x
+                oot){
    
     if(root == NULL){
         return;
@@ -91,10 +92,20 @@ TreeNode* _TreeCreate(TreeNodeType array[], size_t size, size_t* index, TreeNode
     new_node->rchild = _TreeCreate(array, size, index, null_node);
     return new_node;
 }
-//hello
+
 TreeNode* TreeCreate(TreeNodeType array[], size_t size, TreeNodeType null_node){
    //当前读到了数组中第几个元素 
     size_t index = 0;
     TreeNode* new_node = _TreeCreate(array, size, &index, null_node);
     return new_node;
+}
+
+void TreeDestroy(TreeNode* root){
+    if(root == NULL){
+        return;
+    }
+    TreeDestroy(root->lchild);
+    TreeDestroy(root->rchild);
+    free(root);
+    root = NULL;
 }

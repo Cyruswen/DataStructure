@@ -121,11 +121,23 @@ void TestCreate(){
     return;
 }
 
+void TestTreeDestroy(){
+    TestType;
+    TreeNodeType array[] = "abd##eg###c#f##";
+    TreeNode* root = TreeCreate(array, sizeof(array)-1, '#');
+    printf("%p ", root);
+    printf("root:%c\n", root->data);
+    TreeDestroy(root);
+    printf("%p ",root);
+    printf("root:%c\n", root->data);
+}
+
 int main(){
     TestPreOrder();
     TestInOrder();
     TestPostOrder();
     TestLevelOrder();
     TestCreate();
+    TestTreeDestroy();
     return 0;
 }
