@@ -12,7 +12,7 @@ typedef struct TreeNode {
     TreeNodeType data;
     struct TreeNode* lchild;
     struct TreeNode* rchild;
-} TreeNode;
+} TreeNode,*Tree;
 
 void TreeInit(TreeNode** root);
 
@@ -30,4 +30,4 @@ TreeNode* TreeCreate(TreeNodeType array[], size_t size, TreeNodeType null_node);
 
 TreeNode* TreeClone(TreeNode* root);
 
-void TreeDestroy(TreeNode* root);
+void TreeDestroy(Tree* root);

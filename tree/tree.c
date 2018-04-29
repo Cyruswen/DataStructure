@@ -45,9 +45,7 @@ void PostOrder(TreeNode* root){
     return;
 }
 
-void LevelOrder(TreeNode* r:x
-                oot){
-   
+void LevelOrder(TreeNode* root){
     if(root == NULL){
         return;
     }
@@ -100,12 +98,33 @@ TreeNode* TreeCreate(TreeNodeType array[], size_t size, TreeNodeType null_node){
     return new_node;
 }
 
-void TreeDestroy(TreeNode* root){
+void DestroyTreeNode(Tree root){
     if(root == NULL){
         return;
     }
-    TreeDestroy(root->lchild);
-    TreeDestroy(root->rchild);
     free(root);
-    root = NULL;
+    return;
+}
+
+void TreeDestroy(Tree* root){
+    if(root == NULL){
+        return;
+    }
+    if(*root == NULL){
+        return;
+    }
+    TreeDestroy(&(*root)->lchild);
+    TreeDestroy(&(*root)->rchild);
+    DestroyTreeNode(*root);
+    *root = NULL;
+}
+
+TreeNode* TreeClone(TreeNode* root){
+    if(root == NULL){
+        return NULL;
+    }
+    TreeNode* new_node = CreateTreeNode(root->data);
+    new_node->lchild = TreeClone(root->lchild);
+    new_node->rchild = TreeClone(root->rchild);
+    return new_node;
 }

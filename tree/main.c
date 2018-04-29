@@ -124,12 +124,19 @@ void TestCreate(){
 void TestTreeDestroy(){
     TestType;
     TreeNodeType array[] = "abd##eg###c#f##";
-    TreeNode* root = TreeCreate(array, sizeof(array)-1, '#');
-    printf("%p ", root);
-    printf("root:%c\n", root->data);
-    TreeDestroy(root);
-    printf("%p ",root);
-    printf("root:%c\n", root->data);
+    Tree root = TreeCreate(array, sizeof(array)-1, '#');
+    TreeDestroy(&root);
+    printf("execp:(nil), actual:%p\n", root);
+}
+
+void TestTreeClone(){
+    TestType;
+    TreeNodeType array[] = "abd##eg###c#f##";
+    Tree root = TreeCreate(array, sizeof(array)-1, '#');
+    Tree new_root = TreeClone(root);
+    printf("层序遍历\n");
+    LevelOrder(new_root);
+    return;
 }
 
 int main(){
@@ -139,5 +146,6 @@ int main(){
     TestLevelOrder();
     TestCreate();
     TestTreeDestroy();
+    TestTreeClone();
     return 0;
 }
