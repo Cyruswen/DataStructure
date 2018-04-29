@@ -1,3 +1,4 @@
+#if 0
 #include"seqstack.h"
 
 void TestSeqStackInit(){
@@ -91,3 +92,4 @@ int main(){
     TestSeqStackGetFront();
     return 0;
 }
+#endif
