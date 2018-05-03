@@ -1,5 +1,6 @@
-#include<stdio.h>
-#include<stddef.h>
+#include <stdio.h>
+#include <stddef.h>
+#include "seqstack.h"
 
 #define MAX_COL 6
 #define MAX_ROW 6
@@ -52,10 +53,6 @@ void MazePrint(Maze* maze){
 //######################## 迷宫求解（递归的方法）########################
 //#######################################################################
 
-typedef struct Point {
-    int row;
-    int col;
-} Point;
 
 int CanStay(Maze* maze, Point pt){
     //如果pt在地图外一定不能落脚
@@ -132,11 +129,86 @@ void GetPath(Maze* maze, Point entry){
     return;
 }
 
+
+//#######################################################################
+//############## 迷宫求求解（多出口迷宫的最短路径） #####################
+//#######################################################################
+void MazeInitMultiExit(Maze* maze){
+    if(maze == NULL){
+        return;
+    }
+    int map[MAX_ROW][MAX_COL] = { 
+        {0,1,0,0,0,0},
+        {0,1,1,1,0,0},
+        {0,1,0,1,1,1},
+        {1,1,1,0,0,0},
+        {0,0,1,0,0,0},
+        {0,0,1,0,0,0}
+    };
+    size_t i = 0;
+    for(; i < MAX_ROW;i++){
+        size_t j = 0;
+        for(; j < MAX_COL; j++){
+            maze->map[i][j] = map[i][j];
+        }
+    }
+    return;
+}
+
+void _GetShortPath(Maze* maze, Point cur, Point entry, SeqStack* short_path, SeqStack* cur_path){
+    if(maze == NULL || short_path == NULL || cur_path == NULL){
+        return;
+    } 
+    if(!CanStay(maze, cur)){
+        return;
+    }
+    Mark(maze, cur);
+    SeqStackPush(cur_path, cur);
+    if(IsExit(maze, cur, entry)){
+        printf("找到了一条路径\n");
+        if(SeqStackSize(short_path) > SeqStackSize(cur_path) || SeqStackSize(short_path) == 0){
+            SeqStackAssign(cur_path, short_path);
+            printf("这是一条最短路径\n");
+        } 
+        SeqStackPop(cur_path);
+        return;
+    }
+
+    Point up = cur;
+    up.row -= 1;
+    _GetShortPath(maze, up, entry, short_path, cur_path);
+    
+    Point right = cur;
+    right.col += 1;
+    _GetShortPath(maze, right, entry, short_path,cur_path);
+
+    Point down = cur;
+    down.row -= 1;
+    _GetShortPath(maze, down, entry, short_path,cur_path);
+
+    Point left = cur;
+    left.col -= 1;
+    _GetShortPath(maze, left, entry, short_path,cur_path);
+
+    SeqStackPop(cur_path);
+    return;
+}
+
+void GetShortPath(Maze* maze, Point entry){
+    SeqStack short_path;
+    SeqStack cur_path;
+    SeqStackInit(&short_path);
+    SeqStackInit(&cur_path);
+    _GetShortPath(maze, entry, entry, &short_path, &cur_path);
+    //TODO
+}
+
+
+
 //#######################################################################
 //################################ TEST #################################
 //#######################################################################
 
-#define TestType printf("\n############################### %s ###############################\n",__FUNCTION__)
 
 void TestMazePrint(){
     TestType;
