@@ -31,3 +31,7 @@ TreeNode* TreeCreate(TreeNodeType array[], size_t size, TreeNodeType null_node);
 TreeNode* TreeClone(TreeNode* root);
 
 void TreeDestroy(Tree* root);
+
+size_t TreeSize(TreeNode* root);
+
+size_t TreeSize2(TreeNode* root);

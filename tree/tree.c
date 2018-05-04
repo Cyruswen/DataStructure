@@ -128,3 +128,29 @@ TreeNode* TreeClone(TreeNode* root){
     new_node->rchild = TreeClone(root->rchild);
     return new_node;
 }
+
+size_t TreeSize(TreeNode* root){
+    if(root == NULL){
+        return 0;
+    }
+    return 1 + TreeSize(root->lchild) + TreeSize(root->rchild);
+}
+
+void _TreeSize(TreeNode* root, size_t* size){
+    if(root == NULL || size == NULL){
+        return;
+    }
+    (*size)++;
+    _TreeSize(root->lchild, size);
+    _TreeSize(root->rchild, size);
+    return;
+}
+
+size_t TreeSize2(TreeNode* root){
+    if(root == NULL){
+        return 0;
+    }
+    size_t size = 0;
+    _TreeSize(root, &size);
+    return size;
+}

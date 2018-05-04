@@ -139,6 +139,23 @@ void TestTreeClone(){
     return;
 }
 
+void TestTreeSize(){
+    TestType;
+    TreeNodeType array[] = "abd##eg###c#f##";
+    Tree root = TreeCreate(array, sizeof(array)-1, '#');
+    size_t size = TreeSize(root);
+    printf("The size of tree is %zu\n",size);
+    return;
+}
+
+void TestTreeSize2(){
+    TestType;
+    TreeNodeType array[] = "abd##eg###c#f##";
+    Tree root = TreeCreate(array, sizeof(array)-1, '#');
+    size_t size = TreeSize2(root);
+    printf("The size of tree is %zu\n",size);
+}
+
 int main(){
     TestPreOrder();
     TestInOrder();
@@ -147,5 +164,7 @@ int main(){
     TestCreate();
     TestTreeDestroy();
     TestTreeClone();
+    TestTreeSize();
+    TestTreeSize2();
     return 0;
 }
