@@ -45,6 +45,7 @@ void PostOrder(TreeNode* root){
     return;
 }
 
+#if 0
 void LevelOrder(TreeNode* root){
     if(root == NULL){
         return;
@@ -69,6 +70,7 @@ void LevelOrder(TreeNode* root){
        //进入下一次循环，直到队列为空，说明遍历完了
    }
 }
+#endif
 
 TreeNode* _TreeCreate(TreeNodeType array[], size_t size, size_t* index, TreeNodeType null_node){
     if(index == NULL){
@@ -153,4 +155,81 @@ size_t TreeSize2(TreeNode* root){
     size_t size = 0;
     _TreeSize(root, &size);
     return size;
+}
+
+size_t TreeKLevelSize(TreeNode* root, size_t k){
+    if(root == NULL){
+        return 0;
+    }
+    if(k == 1){
+        return 1;
+    }
+    return TreeKLevelSize(root->lchild, k - 1) + TreeKLevelSize(root->rchild, k -1);
+}
+
+size_t TreeHeight(TreeNode* root){
+    if(root == NULL){
+        return 0;
+    }
+    if(TreeHeight(root->lchild) >= TreeHeight(root->rchild)){
+        return TreeHeight(root->lchild) + 1;
+    }else{
+        return TreeHeight(root->rchild) + 1;
+    }
+}
+
+
+
+
+
+void GetLevel(TreeNode* root, int level, SeqQueue* q){
+    if(root == NULL){
+        SeqQueuePush(q, '#');
+        return;
+    } 
+    if(level == 1){
+        SeqQueuePush(q, root->data);
+        return;
+    }
+    GetLevel(root->lchild, level - 1, q);
+    GetLevel(root->rchild, level - 1, q);
+}
+
+int IsCompleteBinTree(TreeNode* root){
+    if(root == NULL){
+        return 0;
+    }
+   //判断树总共有多少层
+   size_t height = TreeHeight(root);
+   //判断除最后一层其它曾是否达到最大值
+   size_t i = 1;
+   for(; i < height; i++){
+       if(TreeKLevelSize(root, i) != (size_t)pow(2,i-1)){
+            return 0;
+       }
+   }
+   //获取最后一层元素
+   SeqQueue q;
+   SeqQueueInit(&q);
+   GetLevel(root, height, &q);
+   //判断在遇到第一个#之后是否存在非#值
+   char tmp;
+   int result;
+   while(1){
+       result = SeqQueueFront(&q,&tmp);
+       if(result == 0){
+           break;
+       }
+       if(tmp == '#'){
+           break;
+       }
+       SeqQueuePop(&q);
+   }       
+   while(SeqQueueFront(&q, &tmp)){
+       if(tmp != '#'){
+           return 0;
+       }
+       SeqQueuePop(&q);
+   }
+   return 1;
 }

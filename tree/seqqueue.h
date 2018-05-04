@@ -4,7 +4,7 @@
 
 #define TestType printf("\n###################### %s #########################\n",__FUNCTION__)
 #define SeqQueueMaxSize 1000
-#if 1
+#if 0
 struct TreeNode;
 typedef struct TreeNode* SeqQueueType;
 #else
