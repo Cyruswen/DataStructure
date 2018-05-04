@@ -183,7 +183,7 @@ void _GetShortPath(Maze* maze, Point cur, Point entry, SeqStack* short_path, Seq
     _GetShortPath(maze, right, entry, short_path,cur_path);
 
     Point down = cur;
-    down.row -= 1;
+    down.row += 1;
     _GetShortPath(maze, down, entry, short_path,cur_path);
 
     Point left = cur;
@@ -200,7 +200,7 @@ void GetShortPath(Maze* maze, Point entry){
     SeqStackInit(&short_path);
     SeqStackInit(&cur_path);
     _GetShortPath(maze, entry, entry, &short_path, &cur_path);
-    //TODO
+    SeqStackPrint(&short_path, "print the shortest way");
 }
 
 
@@ -228,8 +228,19 @@ void TestGetPath(){
     MazePrint(&maze);
 }
 
+void TestGetShortPath(){
+    TestType;
+    Maze maze;
+    Point entry = {0,1};
+    MazeInitMultiExit(&maze);
+    MazePrint(&maze);
+    GetShortPath(&maze, entry);
+    MazePrint(&maze);
+}
+
 int main(){
     TestMazePrint();
     TestGetPath();
+    TestGetShortPath();
     return 0;
 }

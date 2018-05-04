@@ -10,18 +10,18 @@ void SeqStackInit(SeqStack* stack){
     return;
 }
 
-//void SeqStackPrint(SeqStack* stack, const char* msg){
-//    if(stack == NULL){
-//        return;
-//    }
-//    printf("[ %s ]:\n",msg);
-//    size_t i = 0;
-//    for(;i < stack->size;i++){
-//        printf("%p ",*(stack->data+i));
-//    }
-//    printf("\n");
-//    return;
-//}
+void SeqStackPrint(SeqStack* stack, const char* msg){
+    if(stack == NULL){
+        return;
+    }
+    printf("[ %s ]:\n",msg);
+    size_t i = 0;
+    for(;i < stack->size;i++){
+        printf("%d %d\t ",stack->data[i].row, stack->data[i].col);
+    }
+    printf("\n");
+    return;
+}
 
 void SeqStackReSize(SeqStack* stack){
     if(stack == NULL){
