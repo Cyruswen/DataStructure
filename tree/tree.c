@@ -195,6 +195,8 @@ void GetLevel(TreeNode* root, int level, SeqQueue* q){
     GetLevel(root->rchild, level - 1, q);
 }
 
+
+//版本一
 int IsCompleteBinTree(TreeNode* root){
     if(root == NULL){
         return 0;
