@@ -1,7 +1,7 @@
 #include"linklist.h"
 #include<stdlib.h>
 #include<stdio.h>
-//#include<stddef.h>
+#include<stddef.h>
 
 void LinkListPrintChar(LinkNode* phead,const char* msg){
 	printf("[%s]:\n",msg);
