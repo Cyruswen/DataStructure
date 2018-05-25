@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 /////////////////////////////////////////////////////////////
 //冒泡排序
@@ -236,7 +237,7 @@ void ShellSort(int array[], int64_t size){
         return;
     }
     //此时我们使用希尔序列
-    //此循环相当于先处理第一组的第一个数据，第二组的第一个数据，第三组第一个元素
+    //此循环相当于先处理第一组的第一个数据，第二组的第一个数据，第三组第一个元素 第一组第二个元素......
     int64_t gap = size / 2;
     for(; gap > 0; gap /= 2){
         //第二重循环，进行插入排序
@@ -268,7 +269,22 @@ void ShellSort(int array[], int64_t size){
 //稳定性：不稳定排序
 ////////////////////////////////////////////////////////////
 
-void (int array[], size_t size){
+void _MergeSort(int array[], int64_t beg, int64_t end, int* tmp){
+    if(end - beg <= 1){
+        //要么一个元素，要么没有元素，要么非法区间
+        return;
+    }
+    int64_t mid = beg +(end - beg) / 2;
+    //此时有了两个区间[beg, mid), [mid, end）
+    _MergeSort(array, beg, mid, tmp);
+    _MergeSort(array, mid, end, tmp);
+    _MergeArray(array, beg, mid, end, tmp);
+    return;
+}
+
+void MergeSort(int array[], size_t size){
+    int* tmp = (int*)malloc(sizeof(int) * size); 
+    _MergeSort(array, 0, size, tmp);
     if(size <= 1){
         return;
     }
