@@ -1,6 +1,9 @@
 #pragma once
 #include <stdio.h>
 #include <stddef.h>
+
+#define TestType printf("\n######################### %s ############################\n",__FUNCTION__)
+
 //我们存放的是键值对
 #define HashMaxSize 1000
 
@@ -28,3 +31,15 @@ typedef struct HashTable{
     size_t size;
     HashFunc func;
 } HashTable;
+
+void HashInit(HashTable* ht, HashFunc hash_func);
+
+void HashDestroy(HashTable* ht);
+
+void HashInsert(HashTable* ht, KeyType key, ValType value);
+
+int HashFind(HashTable* ht, KeyType key, ValType* value);
+
+void HashRemove(HashTable* ht, KeyType key);
+
+void HashPrnit(HashTable* ht, const char* message);
