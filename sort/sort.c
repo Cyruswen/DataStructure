@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
-
+#include "linkstack.h"
 /////////////////////////////////////////////////////////////
 //冒泡排序
 //时间复杂度：O(N ^ 2)
@@ -264,7 +264,7 @@ void ShellSort(int array[], int64_t size){
 
 
 /////////////////////////////////////////////////////////////
-//归并排序
+//归并排序(递归)
 //时间复杂度：O(N * logN)
 //空间复杂度：O(N)
 //稳定性：稳定排序
@@ -311,3 +311,177 @@ void MergeSort(int array[], size_t size){
     _MergeSort(array, 0, size, tmp);
     free(tmp);
 }
+
+
+/////////////////////////////////////////////////////////////
+//归并排序
+//时间复杂度：O(N * logN)
+//空间复杂度：O(N)
+//稳定性：稳定排序
+////////////////////////////////////////////////////////////
+
+void MergeSortByLoop(int array[], size_t size){
+    if(size <= 1){
+        return;
+    }
+    int* tmp = (int*)malloc(sizeof(int) * size);
+    size_t gap = 1;
+    for(; gap < size; gap *= 2){
+        //在当前gap下，使用i帮助我们完成所有长度为gap的区间合并
+        size_t i = 0;
+        for(;i < size; i += 2 * gap){
+            size_t beg = i;
+            size_t mid = i + gap;
+            //为了防止 mid超出数组最大size
+            if(mid > size){
+                mid = size;
+            }
+            size_t end = i + 2 * gap;
+            if(end > size){
+                end = size;
+            }
+            _MergeArray(array, beg, mid, end, tmp);
+        }
+    }
+    free(tmp);
+}
+
+
+/////////////////////////////////////////////////////////////
+//快速排序
+//时间复杂度：O(N * logN) 最坏情况O(N ^ 2)
+//空间复杂度：最坏O(N)
+//稳定性：不稳定排序
+////////////////////////////////////////////////////////////
+
+//取一个基准值,倒腾，使前半部分小于基准值，后半部分大于基准值
+//如果逆序，快排就不合适，递归可能很深，针对小数组不合适
+// C++ STL std::sort
+// 1.选取基准值的的方法：三个元素选中间值
+// 2.当递归深度达到一定值的时候，就不在继续递归，而是把排序算法转化成堆排序
+// 3.当递归达到一定程度之后，子区间的元素个数已经比较小，把排序算法编程插入排序
+
+//交换法
+int64_t Partion(int array[], int64_t beg, int64_t end){
+    if(end - beg <= 1){
+        return beg;
+    }
+    int64_t left = beg;
+    int64_t right = end - 1;
+    //数组的最后一个元素作基准元素
+    int key = array[right];
+    //从左往右找一个大于key的值
+    while(left < right){
+        while(left < right && array[left] <= key){
+            ++left;
+        }
+        //从右往左找一个小于key的值
+        while(left < right && array[right] >= key){
+            --right;
+        }
+        if(left < right){
+            Swap(&array[left], &array[right]);
+        }
+    }
+    //最后把left指向的位置和基准值交换
+    Swap(&array[left], &array[end - 1]);
+    return left;
+}
+
+void  _QuickSort(int array[], int64_t beg, int64_t end){
+    if(end - beg <= 1){
+        return;
+    }
+    //[beg, mid),左半区间
+    //[mid + 1, end]，右半区间
+    //
+    int64_t mid = Partion(array, beg, end);
+    _QuickSort(array, beg, mid);
+    _QuickSort(array, mid + 1, end);
+}
+
+void QuickSort(int array[], size_t size){
+    _QuickSort(array, 0, size);
+    return;
+}
+
+//挖坑法
+int64_t Partion2(int array[], int64_t beg, int64_t end){
+    if(end - beg <= 1){
+        return beg;
+    }
+    int64_t left = beg;
+    int64_t right = end - 1;
+    //数组的最后一个元素作基准元素
+    int key = array[right];
+    while(left < right){
+        while(left < right && array[left] <= key){
+            ++left;
+        }
+        if(left < right){
+            array[right--] = array[left];
+        }
+        while(left < right && array[right] >= key){
+            --right;
+        }
+        //循环可以退出，意味着 right 指向了一个小于基准值的元素,
+        //就可以把这个值填到刚才left 指向的坑里
+        //一旦复制操作完成，right自身又成了一个坑
+        if(left < right){
+            array[left++] = array[right];
+        }
+    }
+    //一旦left 和right重合，说明整个区间整理完毕
+    //但是还有一个坑
+    array[left] = key;
+    return left;
+}
+
+//3.双指针前移法
+//略
+
+//非递归版本快速排序
+void QuickSortByLoop(int array[], size_t size){
+    if(size <= 1){
+        return;
+    }
+    LinkStack stack;
+    LinkStackInit(&stack);
+    int64_t beg = 0;
+    int64_t end = size;
+    LinkStackPush(&stack, beg);
+    LinkStackPush(&stack, end);
+    while(1){
+        int ret = LinkStackTop(&stack, &end);
+        if(ret == 0){
+            //栈为空，说明排序结束
+            break;
+        }
+        LinkStackPop(&stack);
+        LinkStackTop(&stack, &beg);
+        if(end - beg <= 1){
+            continue;
+        }
+        int64_t mid = Partion(array,beg, end);
+        LinkStackPush(&stack, beg);
+        LinkStackPush(&stack, mid);
+        LinkStackPush(&stack, mid + 1);
+        LinkStackPush(&stack, end);
+    }
+}
+
+/////////////////////////////////////////////////////////////
+//计数排序
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+//奇数排序
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+//睡眠排序：创建线程，根据退出时间
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+//猴子排序：无线猴子定理
+/////////////////////////////////////////////////////////////
