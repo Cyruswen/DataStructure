@@ -51,6 +51,7 @@ void HashInsert(HashTable* ht, KeyType key, ValType value){
             //如果遇到key值相同的，插入失败
             return;
         }else{
+            //线性探测找到下一个有效位置
             offset++;
             if(offset > HashMaxSize){
                 offset = 0;
