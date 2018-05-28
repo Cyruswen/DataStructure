@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -264,10 +265,33 @@ void ShellSort(int array[], int64_t size){
 
 /////////////////////////////////////////////////////////////
 //归并排序
-//时间复杂度：O(N ^ 2)
-//空间复杂度：O(1)
-//稳定性：不稳定排序
+//时间复杂度：O(N * logN)
+//空间复杂度：O(N)
+//稳定性：稳定排序
 ////////////////////////////////////////////////////////////
+
+void _MergeArray(int array[], int64_t beg, int64_t mid,  int64_t end, int* tmp){
+    int64_t cur1 = beg;
+    int64_t cur2 = mid;
+    int64_t tmp_index = beg;
+    while(cur1 < mid && cur2 < end){
+        if(array[cur1] < array[cur2]){
+            tmp[tmp_index++] = array[cur1++];
+        }else{
+            tmp[tmp_index++] = array[cur2++];
+        }
+    }
+    while(cur1 < mid){
+        tmp[tmp_index++] = array[cur1++];
+    }
+    while(cur2 < end){
+        tmp[tmp_index++] = array[cur2++];
+    }
+    //进行归并的时候处理的区间是 array[beg, end),
+    //对应的会把这部分区间元素填充到 tmp[beg, end)
+    memcpy(array + beg, tmp + beg, sizeof(int) * (end - beg));
+    return;
+}
 
 void _MergeSort(int array[], int64_t beg, int64_t end, int* tmp){
     if(end - beg <= 1){
@@ -278,14 +302,12 @@ void _MergeSort(int array[], int64_t beg, int64_t end, int* tmp){
     //此时有了两个区间[beg, mid), [mid, end）
     _MergeSort(array, beg, mid, tmp);
     _MergeSort(array, mid, end, tmp);
-    _MergeArray(array, beg, mid, end, tmp);
+    _MergeArray(array, beg, mid,  end, tmp);
     return;
 }
 
 void MergeSort(int array[], size_t size){
     int* tmp = (int*)malloc(sizeof(int) * size); 
     _MergeSort(array, 0, size, tmp);
-    if(size <= 1){
-        return;
-    }
+    free(tmp);
 }
