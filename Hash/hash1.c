@@ -114,7 +114,7 @@ void HashPrnit(HashTable* ht, const char* message){
     }
     printf("[%s]\n", message);
     size_t i = 0;
-    for(;i < ht->size; i++){
+    for(;i <= ht->size; i++){
         if(ht->data[i].stat == Empty){
             continue;
         }

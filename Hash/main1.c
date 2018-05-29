@@ -24,6 +24,19 @@ void TestHashDestroy(){
     return;
 }
 
+void TestHashRemove(){
+    TestType;
+    HashTable ht;
+    HashInit(&ht, HashFuncDefault);
+    HashInsert(&ht, 1, 1);
+    HashInsert(&ht, 2, 2);
+    HashInsert(&ht, 1001, 11);
+    HashPrnit(&ht, "删除前");
+    HashRemove(&ht, 1001);
+    HashPrnit(&ht, "删除后");
+    return;
+}
+
 void TestHashInsert(){
     TestType;
     HashTable ht;
@@ -58,5 +71,6 @@ int main(){
     TestHashDestroy();
     TestHashInsert();
     TestFind();
+    TestHashRemove();
     return 0;
 }
