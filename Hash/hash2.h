@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 #define HASHMAXSIZE 1000
 
@@ -20,3 +21,5 @@ typedef struct HashTable{
     size_t size;
     HashFunc func;
 } HashTable;
+
+void HashInit(HashTable* ht, HashFunc HashFuncDefault);
