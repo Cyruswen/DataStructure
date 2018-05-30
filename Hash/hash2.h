@@ -23,3 +23,15 @@ typedef struct HashTable{
 } HashTable;
 
 void HashInit(HashTable* ht, HashFunc HashFuncDefault);
+
+HashElem* HashBucketFind(HashElem* Elem, KeyType to_find);
+
+void HashInsert(HashTable* ht, HashFunc HashFuncDefault);
+
+int HashFind(HashTable* ht, KeyType key, ValType* value);
+
+int HashSize(HashTable* ht);
+
+void HashPrint(HashTable* ht,const char* msg);
+
+void HashRemove(HashTable* ht, KeyType key);
