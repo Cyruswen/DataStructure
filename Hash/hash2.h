@@ -5,6 +5,8 @@
 
 #define HASHMAXSIZE 1000
 
+#define TestType printf("\n############################## %s ###############################\n", __FUNCTION__)
+
 typedef int KeyType;
 typedef int ValType;
 
@@ -24,9 +26,11 @@ typedef struct HashTable{
 
 void HashInit(HashTable* ht, HashFunc HashFuncDefault);
 
+void HashDestroy(HashTable* ht);
+
 HashElem* HashBucketFind(HashElem* Elem, KeyType to_find);
 
-void HashInsert(HashTable* ht, HashFunc HashFuncDefault);
+void HashInsert(HashTable* ht, KeyType key, ValType value);
 
 int HashFind(HashTable* ht, KeyType key, ValType* value);
 
