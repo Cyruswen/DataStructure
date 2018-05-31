@@ -8,9 +8,6 @@ HashElem* CreateHashElem(KeyType key, ValType value){
     return new_node;
 }
 
-size_t HashFuncDefault(KeyType key){
-    return key % HASHMAXSIZE;
-}
 
 void DestroyHashElem(HashElem* hash){
     free(hash);
@@ -30,7 +27,7 @@ void HashInit(HashTable* ht, HashFunc HashFuncDefault){
     return;
 }
 
-void HashInit(HashTable* ht){
+void HashDestroy(HashTable* ht){
     if(ht == NULL){
         return;
     }
@@ -76,9 +73,9 @@ void HashInsert(HashTable* ht, KeyType key, ValType value){
     }
 
     HashElem* new_node = CreateHashElem(key, value);
-    new_node->next = ht->data[offset]->next;
+    new_node->next = ht->data[offset];
     ht->data[offset] = new_node;
-    ht->size++;
+    ++ht->size;
     return;
 }
 
