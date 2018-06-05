@@ -1,13 +1,16 @@
 #include "hash2.h"
 
 HashElem* CreateHashElem(KeyType key, ValType value){
-    HashElem* new_node = (HashElem*)sizeof(HashElem);
+    HashElem* new_node = (HashElem*)malloc(sizeof(HashElem));
     new_node->key = key;
     new_node->value = value;
     new_node->next = NULL;
     return new_node;
 }
 
+size_t HashFuncDefault(KeyType key){
+    return key % HASHMAXSIZE;
+}
 
 void DestroyHashElem(HashElem* hash){
     free(hash);
