@@ -39,3 +39,5 @@ int HashSize(HashTable* ht);
 void HashPrint(HashTable* ht,const char* msg);
 
 void HashRemove(HashTable* ht, KeyType key);
+
+size_t HashFuncDefault(KeyType key);
