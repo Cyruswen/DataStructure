@@ -47,10 +47,24 @@ void TestHashFind(){
     return;
 }
 
+void TestHashRemove(){
+    HashTable ht;
+    HashInit(&ht, HashFuncDefault);
+    HashInsert(&ht, 2, 10);
+    HashInsert(&ht, 10, 13);
+    HashInsert(&ht, 12, 14);
+    HashInsert(&ht, 13, 15);
+    HashPrint(&ht, "删除前");
+    HashRemove(&ht,12);
+    HashPrint(&ht, "删除后");
+    return;
+}
+
 int main(){
     TestHashInit();
     TestHashDestroy();
     TestHashInsert();
     TestHashFind();
+    TestHashRemove();
     return 0;
 }
