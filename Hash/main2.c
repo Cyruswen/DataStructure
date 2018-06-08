@@ -33,12 +33,24 @@ void TestHashInsert(){
 }
 
 void TestHashFind(){
-
+    TestType;
+    HashTable ht;
+    HashInit(&ht, HashFuncDefault);
+    HashInsert(&ht, 2, 10);
+    HashInsert(&ht, 10, 13);
+    HashInsert(&ht, 12, 14);
+    HashInsert(&ht, 13, 15);
+    int Val;
+    int ret = HashFind(&ht,13, &Val );
+    printf("ret expect 1, actual %d\n", ret);
+    printf("value expect 15, actual %d\n", Val);
+    return;
 }
 
 int main(){
     TestHashInit();
     TestHashDestroy();
     TestHashInsert();
+    TestHashFind();
     return 0;
 }
