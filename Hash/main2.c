@@ -32,7 +32,9 @@ void TestHashInsert(){
     return;
 }
 
+void TestHashFind(){
 
+}
 
 int main(){
     TestHashInit();
