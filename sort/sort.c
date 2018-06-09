@@ -405,7 +405,7 @@ void QuickSort(int array[], size_t size){
     return;
 }
 
-//挖坑法
+//挖坑法(哈哈)
 int64_t Partion2(int array[], int64_t beg, int64_t end){
     if(end - beg <= 1){
         return beg;
