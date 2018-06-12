@@ -18,3 +18,5 @@ void TreeInsert(TreeNode** pRoot, TreeNodeType to_insert);
 void PreOrder(TreeNode* root);
 
 void InOrder(TreeNode* root);
+
+TreeNode* TreeFind(TreeNode* root, TreeNodeType to_find);

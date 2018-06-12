@@ -85,3 +85,19 @@ void InOrder(TreeNode* root){
     printf("%c ", root->data);
     InOrder(root->rchild);
 }
+
+TreeNode* TreeFind(TreeNode* root, TreeNodeType to_find){
+    if(root == NULL){
+        return NULL;
+    }
+    //如果to_find < root->data 递归查找左子树
+    if(root->data > to_find){
+       return TreeFind(root->lchild, to_find);
+    }
+    //如果to_find > root->data 递归查找右子树
+    if(root->data < to_find)
+    {
+        return TreeFind(root->rchild, to_find);
+    }
+    return root;
+}
