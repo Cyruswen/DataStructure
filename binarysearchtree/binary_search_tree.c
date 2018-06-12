@@ -67,3 +67,7 @@ void TreeInsert(TreeNode** pRoot, TreeNodeType to_insert){
     }
     return;
 }
+
+void PreOrder(TreeNode* root){
+
+}
