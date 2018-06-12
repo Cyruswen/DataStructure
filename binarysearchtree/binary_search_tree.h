@@ -14,3 +14,5 @@ void TreeInit(TreeNode** pRoot);
 void TreeDestroy(TreeNode** pRoot);
 
 void TreeInsert(TreeNode** pRoot, TreeNodeType to_insert);
+
+void PreOrder(TreeNode* root);
