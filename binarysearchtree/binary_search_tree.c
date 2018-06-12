@@ -69,5 +69,19 @@ void TreeInsert(TreeNode** pRoot, TreeNodeType to_insert){
 }
 
 void PreOrder(TreeNode* root){
+    if(root == NULL){
+        return;
+    }
+    printf("%c ", root->data);
+    PreOrder(root->lchild);
+    PreOrder(root->rchild);
+}
 
+void InOrder(TreeNode* root){
+    if(root == NULL){
+        return;
+    }
+    InOrder(root->lchild);
+    printf("%c ", root->data);
+    InOrder(root->rchild);
 }
