@@ -5,6 +5,7 @@
 
 void HashInit(HashTable* ht, HashFunc hash_func){
     if(ht == NULL){
+      //错误输入
         return;
     }
     ht->size = 0;
