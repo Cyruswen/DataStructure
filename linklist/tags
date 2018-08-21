@@ -1,0 +1,72 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CreateNode	linklist.c	/^LinkNode* CreateNode(LinkNodeType value){$/;"	f
+DestroyNode	linklist.c	/^void DestroyNode(LinkNode* node){$/;"	f
+JoseCycle	linklist.c	/^LinkNode* JoseCycle(LinkNode* phead,size_t food){$/;"	f
+LinkListBubble	linklist.c	/^void LinkListBubble(LinkNode* phead){$/;"	f
+LinkListCycleEntryPos	linklist.c	/^LinkNode* LinkListCycleEntryPos(LinkNode* phead){$/;"	f
+LinkListCycleSize	linklist.c	/^size_t LinkListCycleSize(LinkNode* phead){$/;"	f
+LinkListDestroy	linklist.c	/^void LinkListDestroy(LinkNode** phead){$/;"	f
+LinkListEmpty	linklist.c	/^int LinkListEmpty(LinkNode* phead){$/;"	f
+LinkListErase1	linklist.c	/^void LinkListErase1(LinkNode** phead,LinkNode* pos){$/;"	f
+LinkListErase2	linklist.c	/^void LinkListErase2(LinkNode** phead,LinkNode** pos){$/;"	f
+LinkListErase3	linklist.c	/^void LinkListErase3(LinkNode** phead,LinkNode** pos){$/;"	f
+LinkListEraseKth	linklist.c	/^void LinkListEraseKth(LinkNode** phead,size_t k){$/;"	f
+LinkListFind	linklist.c	/^LinkNode* LinkListFind(LinkNode* phead,LinkNodeType to_find){$/;"	f
+LinkListFindKth	linklist.c	/^LinkNode* LinkListFindKth(LinkNode* phead,size_t k){$/;"	f
+LinkListFindMid	linklist.c	/^LinkNode* LinkListFindMid(LinkNode* phead){$/;"	f
+LinkListHasCycle	linklist.c	/^LinkNode* LinkListHasCycle(LinkNode* phead){$/;"	f
+LinkListHasCyclePos	linklist.c	/^LinkNode* LinkListHasCyclePos(LinkNode* phead1,LinkNode* phead2){$/;"	f
+LinkListInit	linklist.c	/^void LinkListInit(LinkNode** node){$/;"	f
+LinkListInsert	linklist.c	/^void LinkListInsert(LinkNode** phead,LinkNode* pos,LinkNodeType value){$/;"	f
+LinkListInsertAfter	linklist.c	/^void LinkListInsertAfter(LinkNode** phead,LinkNode* pos,LinkNodeType value){$/;"	f
+LinkListInsertSp	linklist.c	/^void LinkListInsertSp(LinkNode** phead, LinkNode* pos, LinkNodeType value){$/;"	f
+LinkListMerge	linklist.c	/^LinkNode* LinkListMerge(LinkNode* phead1,LinkNode* phead2){$/;"	f
+LinkListPopBack	linklist.c	/^void LinkListPopBack(LinkNode** phead){$/;"	f
+LinkListPopFront	linklist.c	/^void LinkListPopFront(LinkNode** phead){$/;"	f
+LinkListPrintChar	linklist.c	/^void LinkListPrintChar(LinkNode* phead,const char* msg){$/;"	f
+LinkListPrintReverse	linklist.c	/^void LinkListPrintReverse(LinkNode* phead){$/;"	f
+LinkListPushBack	linklist.c	/^void LinkListPushBack(LinkNode** phead, LinkNodeType value){$/;"	f
+LinkListPushFront	linklist.c	/^void LinkListPushFront(LinkNode** phead,LinkNodeType value){$/;"	f
+LinkListRemove	linklist.c	/^void LinkListRemove(LinkNode** phead,LinkNodeType value){$/;"	f
+LinkListRemoveAll	linklist.c	/^void LinkListRemoveAll(LinkNode** phead,LinkNodeType value){$/;"	f
+LinkListReverse	linklist.c	/^void LinkListReverse(LinkNode** phead){$/;"	f
+LinkListSize	linklist.c	/^size_t LinkListSize(LinkNode* phead){$/;"	f
+LinkNode	linklist.h	/^typedef struct LinkNode{$/;"	s
+LinkNode	linklist.h	/^}LinkNode;$/;"	t	typeref:struct:LinkNode
+LinkNodeType	linklist.h	/^typedef char LinkNodeType;$/;"	t
+Swap	linklist.c	/^void Swap(LinkNodeType* a,LinkNodeType* b){$/;"	f
+TestInit	main.c	/^void TestInit(){$/;"	f
+TestJoseCycle	main.c	/^void TestJoseCycle(){$/;"	f
+TestLinkListBubble	main.c	/^void TestLinkListBubble(){$/;"	f
+TestLinkListCycleEntryPos	main.c	/^void TestLinkListCycleEntryPos(){$/;"	f
+TestLinkListCycleSize	main.c	/^void TestLinkListCycleSize(){$/;"	f
+TestLinkListErase1	main.c	/^void TestLinkListErase1(){$/;"	f
+TestLinkListErase2	main.c	/^void TestLinkListErase2(){$/;"	f
+TestLinkListErase3	main.c	/^void TestLinkListErase3(){$/;"	f
+TestLinkListEraseKth	main.c	/^void TestLinkListEraseKth(){$/;"	f
+TestLinkListFind	main.c	/^void TestLinkListFind(){$/;"	f
+TestLinkListFindKth	main.c	/^void TestLinkListFindKth(){$/;"	f
+TestLinkListFindMid	main.c	/^void TestLinkListFindMid(){$/;"	f
+TestLinkListHasCycle	main.c	/^void TestLinkListHasCycle(){$/;"	f
+TestLinkListHasCyclePos	main.c	/^void TestLinkListHasCyclePos(){$/;"	f
+TestLinkListInsert	main.c	/^void TestLinkListInsert(){$/;"	f
+TestLinkListInsertAfter	main.c	/^void TestLinkListInsertAfter(){$/;"	f
+TestLinkListInsertSp	main.c	/^void TestLinkListInsertSp(){$/;"	f
+TestLinkListMerge	main.c	/^void TestLinkListMerge(){$/;"	f
+TestLinkListPrintReverse	main.c	/^void TestLinkListPrintReverse(){$/;"	f
+TestLinkListPushFront	main.c	/^void TestLinkListPushFront(){$/;"	f
+TestLinkListRemove	main.c	/^void TestLinkListRemove(){$/;"	f
+TestLinkListRemoveAll	main.c	/^void TestLinkListRemoveAll(){$/;"	f
+TestLinkListReverse	main.c	/^void TestLinkListReverse(){$/;"	f
+TestPushBack	main.c	/^void TestPushBack(){$/;"	f
+TestType	linklist.h	5;"	d
+TestUnionSet	main.c	/^void TestUnionSet(){$/;"	f
+UnionSet	linklist.c	/^LinkNode* UnionSet(LinkNode* phead1,LinkNode* phead2){$/;"	f
+data	linklist.h	/^	LinkNodeType data;$/;"	m	struct:LinkNode
+main	main.c	/^int main(){$/;"	f
+next	linklist.h	/^	struct LinkNode* next;$/;"	m	struct:LinkNode	typeref:struct:LinkNode::LinkNode
