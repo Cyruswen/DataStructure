@@ -24,14 +24,14 @@ void LinkListInit(LinkNode** node){
 
 LinkNode* CreateNode(LinkNodeType value){
 	LinkNode* new_node = (LinkNode*)malloc(sizeof(LinkNode));
-	if(new_node == NULL){
-		printf("申请内存失败！\n");
-		exit(1);
-	}else{
-		new_node->data = value;
-		new_node->next = NULL;
-		return new_node;
-	}
+    if(new_node == NULL){
+        printf("申请内存失败！\n");
+        exit(1);
+    }else{
+        new_node->data = value;
+        new_node->next = NULL;
+        return new_node;
+    }
 }
 
 void DestroyNode(LinkNode* node){
