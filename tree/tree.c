@@ -1,4 +1,5 @@
 #include "tree.h"
+//测试
 
 void TreeInit(TreeNode** root){
     if(root == NULL){
